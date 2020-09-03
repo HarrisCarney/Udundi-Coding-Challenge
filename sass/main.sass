@@ -1,0 +1,207 @@
+@import "node_modules/bootstrap/scss/bootstrap"
+$enable-responsive-font-sizes: true
+$primaryColor: #611818
+$primaryColorTransparent: rgba(97, 24, 24, 0.6)
+
+.landing__container
+  background: url('../assets/images/background.png')
+  background-size: cover
+
+  .landing__explore
+    height: 100vh
+    display: flex
+
+  .explore__container
+    position: relative
+    align-self: center
+    margin-top: 30%
+    width: auto !important
+ 
+    .explore__title
+      +font-size(14rem)
+      color: white
+      letter-spacing: 0.62px
+      opacity: 1
+      font-family: 'Playfair Display'
+      transition: opacity 0.2s linear;
+      animation: 0.5s ease-out 0s 1 slideInFromLeft;
+
+    .explore-title-out
+      opacity: 0
+      transition: opacity 0.2s linear
+
+    .explore__details
+      position: relative
+      font-family: 'Arial'
+
+      .details__action
+        display: flex
+        align-items: center
+        cursor: pointer
+        color: white
+        font-size: 14px
+
+        .action__icon
+          margin-right: 10px
+          width: 30px
+          height: 30px
+          background: white
+          text-align: center
+          line-height: 30px
+          border-radius: 30px
+          color: $primaryColor
+          transition: transform 0.2s cubic-bezier(0.47, 1.64, 0.41, 0.8);
+      
+      .details__action:active .action__icon
+        transform: scale(0.8)
+    
+    .details__card
+      display: flex
+      flex-direction: column
+      width: auto
+      height: auto
+      max-width: 30px
+      max-height: 30px
+      overflow: hidden
+      position: absolute
+      bottom: 0
+      border-radius: 30px
+      visibility: hidden
+      background: white
+      z-index: 1
+      overflow-y: scroll
+      
+      .details__body
+        display: flex
+        flex-direction: column
+        opacity: 0
+
+        .card-close
+          align-self: flex-end
+          font-size: 14px
+          cursor: pointer
+
+        .body__title 
+          font-size: 4rem
+          margin: 10px 0
+          font-family: 'Playfair Display'
+          color: $primaryColor
+
+        .body__seperator
+          margin: 10px 0
+          width: 60%
+          height: 2px
+          display: block
+          background: linear-gradient(90deg, $primaryColor, rgba(255, 255, 255, 0))
+
+        .body__text
+          line-height: 28px
+          +font-size(1rem)
+          margin: 10px 0 30px 0
+          color: #505050
+        
+        .body__button
+          background-image: linear-gradient(90deg, #611818 0%, #a36754 100%)
+          border: 1px solid #979797
+          height: 55px
+          font-size: 1rem
+          line-height: 55px
+          letter-spacing: 0.2rem
+          color: white
+          width: 60%
+          text-align: center
+          text-transform: uppercase
+
+      .card-body-in
+        opacity: 1
+        transition: transform 0.2s cubic-bezier(0.47, 1.64, 0.41, 0.8) 0.4s, opacity 0.2s cubic-bezier(0.47, 1.64, 0.41, 0.8) 0.4s
+
+      .card-body-out
+        opacity: 0
+        transition: opacity 0.1s cubic-bezier(0.47, 1.64, 0.41, 0.8)
+
+    .card-toggle-in
+      max-width: 600px
+      max-height: 80vh
+      border-radius: 0
+      bottom: -100px
+      visibility: visible
+      padding: 40px
+      transition: max-width 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8), max-height 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8), bottom 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8), border-radius 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8)
+    
+    .card-toggle-out
+      transition: max-width 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8), max-height 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8), bottom 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8), border-radius 0.4s linear, visibility 0s cubic-bezier(0.47, 1.64, 0.41, 0.8) 0.2s
+
+  .landing__social
+    display: flex
+
+    .socials
+      display: flex
+      align-items: center
+
+      .social__link
+        margin: 5px 10px
+
+@keyframes slideInFromLeft
+  0%
+    opacity: 0
+    transform: translateX(-10%)
+  100%
+    opacity: 1
+    transform: translateX(0)
+
+@include media-breakpoint-down(xs)
+  .landing__explore
+    background: $primaryColorTransparent
+    
+  .landing__social
+    background: $primaryColorTransparent 
+    align-items: flex-start
+    justify-content: flex-start 
+
+    .socials
+      flex-direction: row !important
+
+@include media-breakpoint-down(sm)
+
+@include media-breakpoint-up(sm) 
+ .landing__explore
+    background: $primaryColor
+
+@include media-breakpoint-down(md) 
+  html
+    font-size: 12px
+
+  .explore__title
+    font-size: 6rem
+
+  .landing__social 
+    align-items: flex-end
+    justify-content: flex-end 
+
+    .socials 
+      flex-direction: row
+
+@include media-breakpoint-up(md) 
+  html
+    font-size: 14px
+
+  .landing__explore
+    background: $primaryColor
+
+  .explore__details
+    margin-left: 50px
+
+  .details__card
+    margin-left: 50px
+
+  .explore__container
+    margin-left: 20%
+
+  .landing__social 
+    align-items: flex-end
+    justify-content: flex-end 
+
+    .socials
+      flex-direction: column
+
